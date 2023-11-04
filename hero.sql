@@ -151,26 +151,3 @@ VALUES
 
     ALTER TABLE item_price
     ADD Price DECIMAL (10,2);
-
-    UPDATE hero 
-    SET is_active = false
-    WHERE hero_id = 1;
-
-    DELETE FROM HeroItem 
-    WHERE hero_id = 1;
-
-SELECT p.player_name, h.hero_id
-FROM player p
-JOIN hero h ON p.hero_id = h.hero_id
-WHERE h.is_active = true;
-
-SELECT hero_name
-FROM hero
-WHERE class_id = (SELECT class_id FROM class WHERE class_name = 'Archers');
-
-SELECT c.class_name, AVG(p.player_level) AS avg_player_level
-FROM class c
-JOIN hero h ON c.class_id = h.class_id
-JOIN player p ON h.hero_id = p.hero_id
-GROUP BY c.class_name
-ORDER BY avg_player_level;
